@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Welcome | Student Event Portal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f9f9f9;
+    }
+
+    .wrapper {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header */
+    header {
+      background: #003366;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    nav {
+      flex-grow: 1;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 1.5rem;
+      font-weight: 500;
+    }
+
+    .login-btn {
+      background: white;
+      color: #003366;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      margin: 5rem auto;
+      max-width: 700px;
+      flex-grow: 1;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      color: #003366;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #555;
+    }
+
+    /* Footer */
+    footer {
+  background-color: #003366; /* same as header */
+  color: white;
+  padding: 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+  margin-top: auto;
+}
+.footer a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .footer-column h3 {
+      color: white;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-column p,
+    .footer-column a {
+      color: #bbb;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+
+    .footer-column a:hover {
+      color: #fff;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 1rem;
+      margin-top: 1.5rem;
+      border-top: 1px solid #3b4a59;
+      color: #888;
+    }
+
+    .social-icons i {
+      margin-right: 0.8rem;
+      color: #bbb;
+    }
+
+    .social-icons i:hover {
+      color: white;
+    }
+    .get-started-btn {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #003366;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+.get-started-btn:hover {
+  background-color: #0055aa;
+}
+
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <header>
+    <div class="logo">🎓 College Events</div>
+    <nav>
+      <a href="{% url 'home' %}">Home</a>
+      <a href="{% url 'home' %}">Events</a>
+      <a href="{% url 'home' %}">Contact Us</a>
+    </nav>
+    <a href="{% url 'home' %}">
+      <button class="login-btn">Login</button>
+    </a>
+  </header>
+  {% block start %} {% endblock %}
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>🎓 College Events</h3>
+        <p>Your one-stop platform for discovering, organizing, and participating in college events. Stay connected with your academic community.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <a href="{% url 'home' %}">Browse Events</a>
+        <a href="#">Student Portal</a>
+        <a href="#">Faculty Portal</a>
+        <a href="#">Contact Support</a>
+      </div>
+      <div class="footer-column" id="contact">
+        <h3>Contact Info</h3>
+        <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+        <p><i class="fas fa-envelope"></i> events@college.edu</p>
+        <div class="social-icons">
+          <i class="fab fa-facebook-f"></i>
+          <i class="fab fa-twitter"></i>
+          <i class="fab fa-instagram"></i>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2024 College Events Portal. All rights reserved.
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
