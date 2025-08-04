@@ -1,8 +1,7 @@
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-# Create your models here.
-
-class User(models.Model):
+class User(AbstractUser):
     ROLES = (
         ('admin', 'Admin'),
         ('student', 'Student'),
@@ -11,6 +10,3 @@ class User(models.Model):
     phone = models.CharField(max_length=15)
     role = models.CharField(max_length=10, choices=ROLES)
     created_at = models.DateTimeField(auto_now_add=True)
-    username = models.CharField(max_length=50)
-    password = models.CharField(max_length=50)
-    email = models.EmailField()

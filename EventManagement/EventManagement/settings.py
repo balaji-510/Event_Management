@@ -29,6 +29,7 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+AUTH_USER_MODEL = 'accounts.User'  # replace `yourapp` with actual app name
 
 INSTALLED_APPS = [
     'django.contrib.admin',
