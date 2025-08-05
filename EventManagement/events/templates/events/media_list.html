@@ -1,0 +1,12 @@
+{% extends 'Base/home.html' %}
+{% block start %}
+<div class="container">
+  <h2>Media for Event: {{ event.title }}</h2>
+  <a href="{% url 'upload_media' event.id %}">Upload Media</a>
+  <ul>
+    {% for item in media %}
+      <li>{{ item.media_type }} - {{ item.file_path }}</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

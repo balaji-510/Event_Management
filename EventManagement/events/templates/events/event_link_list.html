@@ -1,0 +1,12 @@
+{% extends 'Base/home.html' %}
+{% block start %}
+<div class="container">
+  <h2>Links for Event: {{ event.title }}</h2>
+  <a href="{% url 'add_event_link' event.id %}">Add New Link</a>
+  <ul>
+    {% for link in links %}
+      <li>{{ link.platform_name }} - <a href="{{ link.join_link }}">Join</a></li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

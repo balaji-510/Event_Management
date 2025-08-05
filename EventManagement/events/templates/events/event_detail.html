@@ -1,0 +1,120 @@
+{% extends 'Base/home.html' %}
+{% block start %}
+<style>
+  .event-detail-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .event-title {
+    font-size: 2rem;
+    color: #003366;
+    margin-bottom: 0.5rem;
+  }
+
+  .event-meta {
+    color: #555;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .section {
+    margin-top: 2rem;
+  }
+
+  .section h3 {
+    color: #003366;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 0.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .info-box {
+    background: #f7f9fc;
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+  }
+
+  .info-box a {
+    color: #0055aa;
+    text-decoration: none;
+  }
+
+  .info-box a:hover {
+    text-decoration: underline;
+  }
+
+  .announcement {
+    padding: 0.8rem;
+    border-left: 4px solid #003366;
+    background: #f2f4f8;
+    margin-bottom: 0.8rem;
+    border-radius: 6px;
+  }
+</style>
+
+<div class="event-detail-container">
+  <div class="event-title">{{ event.title }}</div>
+  <div class="event-meta">
+    <strong>Date:</strong> {{ event.event_date }} |
+    <strong>Time:</strong> {{ event.start_time }} - {{ event.end_time }} |
+    <strong>Location:</strong> {{ event.location }}
+  </div>
+  <div>{{ event.description }}</div>
+
+  <div class="section">
+    <h3>🔗 Join Links</h3>
+    {% if links %}
+      {% for link in links %}
+        <div class="info-box">
+          <strong>{{ link.platform_name }}</strong> <br>
+          <a href="{{ link.join_link }}" target="_blank">{{ link.join_link }}</a><br>
+          {% if link.passcode %}<small>Passcode: {{ link.passcode }}</small>{% endif %}
+          <div><small>Scheduled: {{ link.scheduled_time }}</small></div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p>No links available.</p>
+    {% endif %}
+  </div>
+
+  <div class="section">
+    <h3>🖼 Media</h3>
+    {% if media %}
+      {% for item in media %}
+        <div class="info-box">
+          <strong>{{ item.media_type }}</strong> - <a href="{{ item.file_path }}" target="_blank">{{ item.file_path }}</a>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p>No media uploaded yet.</p>
+    {% endif %}
+  </div>
+
+  <div class="section">
+    <h3>📣 Announcements</h3>
+    {% if announcements %}
+      {% for a in announcements %}
+        <div class="announcement">
+          <strong>{{ a.title }}</strong><br>
+          {{ a.message }}<br>
+          <small>{{ a.created_at }}</small>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p>No announcements posted.</p>
+    {% endif %}
+  </div>
+
+  <div class="section" style="text-align:right;">
+    {% if request.user == event.organizer or request.user.role == 'admin' %}
+      <a href="{% url 'edit_event' event.id %}" class="btn btn-primary">Edit Event</a>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

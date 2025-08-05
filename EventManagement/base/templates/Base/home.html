@@ -158,17 +158,30 @@
 <body>
 <div class="wrapper">
 
-  <header>
-    <div class="logo">🎓 College Events</div>
-    <nav>
-      <a href="{% url 'home' %}">Home</a>
-      <a href="{% url 'home' %}">Events</a>
-      <a href="{% url 'home' %}">Contact Us</a>
-    </nav>
+<header>
+  <div class="logo">🎓 College Events</div>
+
+  <nav>
+    <a href="{% url 'home' %}">Home</a>
+    <a href="{% url 'event_list' %}">Events</a>
+    <a href="{% url 'home' %}">Contact Us</a>
+  </nav>
+
+  {% if user.is_authenticated %}
+    <div>
+      <span style="color:white; margin-right: 1rem;">
+        Hello, {{ user.username }}
+      </span>
+      <a href="{% url 'logout' %}">
+        <button class="login-btn">Logout</button>
+      </a>
+    </div>
+  {% else %}
     <a href="{% url 'login' %}">
       <button class="login-btn">Login</button>
     </a>
-  </header>
+  {% endif %}
+</header>
   {% block start %} {% endblock %}
   <footer>
     <div class="footer-container">

@@ -1,0 +1,19 @@
+{% extends 'Base/home.html' %}
+{% block start %}
+<div class="create-event-container">
+  <h2>Add New Category</h2>
+  <form method="POST">
+    {% csrf_token %}
+    {% for field in form %}
+      <div class="form-group">
+        {{ field.label_tag }}
+        {{ field }}
+        {% if field.errors %}
+          <div style="color:red;">{{ field.errors|striptags }}</div>
+        {% endif %}
+      </div>
+    {% endfor %}
+    <button class="submit-btn" type="submit">Create Category</button>
+  </form>
+</div>
+{% endblock %}

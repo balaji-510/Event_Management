@@ -5,6 +5,9 @@ class EventCategory(models.Model):
     category_name = models.CharField(max_length=100)
     description = models.TextField()
 
+    def __str__(self):
+        return self.category_name
+
 class Event(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
@@ -17,14 +20,6 @@ class Event(models.Model):
     max_participants = models.IntegerField()
     is_open = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
-
-class EventSchedule(models.Model):
-    event = models.ForeignKey(Event, on_delete=models.CASCADE)
-    title = models.CharField(max_length=200)
-    description = models.TextField()
-    start_time = models.DateTimeField()
-    end_time = models.DateTimeField()
-    location = models.CharField(max_length=100)
 
 class EventLink(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
@@ -41,7 +36,7 @@ class Media(models.Model):
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
 class EventMetric(models.Model):
-    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE,related_name='metrics')
     views = models.IntegerField(default=0)
     registrations = models.IntegerField(default=0)
     attendance_count = models.IntegerField(default=0)

@@ -1,0 +1,12 @@
+{% extends 'Base/home.html' %}
+{% block start %}
+<div class="container">
+  <h2>Announcements for {{ event.title }}</h2>
+  <a href="{% url 'create_announcement' event.id %}">Create Announcement</a>
+  <ul>
+    {% for announcement in announcements %}
+      <li><strong>{{ announcement.title }}</strong>: {{ announcement.message }}</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'Base/home.html' %}
+{% block start %}
+<div class="container">
+  <h2>Metrics for {{ event.title }}</h2>
+  <ul>
+    <li>Views: {{ metrics.views }}</li>
+    <li>Registrations: {{ metrics.registrations }}</li>
+    <li>Attendance: {{ metrics.attendance_count }}</li>
+    <li>Feedbacks: {{ metrics.feedback_count }}</li>
+  </ul>
+</div>
+{% endblock %}

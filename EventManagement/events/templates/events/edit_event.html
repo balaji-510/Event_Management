@@ -1,0 +1,11 @@
+{% extends 'Base/home.html' %}
+{% block start %}
+<div class="container">
+  <h2>Edit Event - {{ event.title }}</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Update Event</button>
+  </form>
+</div>
+{% endblock %}
